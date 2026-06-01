@@ -1,0 +1,226 @@
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>machi no spoon — まちのどこかで、ほっとひといき。</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Fredoka:wght@400;500;600;700&family=Zen+Maru+Gothic:wght@400;500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="styles.css">
+</head>
+<body>
+
+<!-- ============ HEADER ============ -->
+<header class="nav">
+  <div class="wrap">
+    <a class="brand" href="#top"><span class="sp">🥄</span>machi no spoon</a>
+    <nav>
+      <a href="#schedule">出店予定</a>
+      <a href="#menu">メニュー</a>
+      <a href="#recommend">おすすめ</a>
+      <a href="#owner">店主紹介</a>
+      <a href="#contact">お問い合わせ</a>
+    </nav>
+    <button class="menubtn" id="menubtn" aria-label="メニューを開く" aria-expanded="false"><span></span><span></span><span></span></button>
+  </div>
+</header>
+
+<!-- ============ MOBILE DRAWER ============ -->
+<div class="drawer-overlay" id="drawerOverlay" aria-hidden="true"></div>
+<nav class="drawer" id="drawer" aria-label="モバイルナビゲーション">
+  <button class="drawer-close" id="drawerClose" aria-label="閉じる">✕</button>
+  <a class="brand" href="#top" style="margin-bottom:24px"><span class="sp">🥄</span>machi no spoon</a>
+  <a href="#schedule">出店予定</a>
+  <a href="#menu">メニュー</a>
+  <a href="#recommend">おすすめ</a>
+  <a href="#owner">店主紹介</a>
+  <a href="#contact">お問い合わせ</a>
+</nav>
+
+<!-- ============ HERO ============ -->
+<section class="hero" id="top" data-screen-label="Hero">
+  <div class="hero-inner">
+    <!-- background scenery -->
+    <div class="ground"></div>
+    <div class="hill"></div>
+    <div class="hill r"></div>
+    <div class="bush b1"></div>
+    <div class="bush b2"></div>
+    <div class="road"></div>
+    <!-- clouds -->
+    <img class="cloud c1" src="assets/cloud_a.png" alt="">
+    <img class="cloud c2" src="assets/cloud_c.png" alt="">
+    <img class="cloud c3" src="assets/cloud_b.png" alt="">
+    <img class="cloud c4" src="assets/cloud_d.png" alt="">
+    <!-- copy -->
+    <div class="hero-copy">
+      <div class="marks">＼　／</div>
+      <h1 class="en">machi no spoon</h1>
+      <div class="sub">心もおなかも、ほっとひといき。</div>
+      <div class="desc">スープとホットサンドを届ける、小さなキッチンカーです。</div>
+    </div>
+    <!-- truck (右→左へ走行) -->
+    <div class="truck-wrap">
+      <div class="truck-bob">
+        <img class="steam" src="assets/steam.png" alt="">
+        <img class="truck" src="assets/truck.png" alt="machi no spoon のキッチンカー">
+      </div>
+    </div>
+    <div class="hero-anim-note">CSSアニメ：🚚右→左ループ走行 ／ ☁雲が流れる ／ ~湯気ゆらゆら</div>
+  </div>
+</section>
+
+<!-- ============ 出店予定 ============ -->
+<section class="section schedule" id="schedule" data-screen-label="出店予定">
+  <div class="wrap">
+    <div class="eyebrow">SCHEDULE</div>
+    <h2 class="h2">出店予定</h2>
+    <p class="lead">今日以降の予定を自動で判定して、いちばん近い出店を大きく表示します。</p>
+    <div class="card statuscard" id="statusCard"></div>
+    <div class="stat-mini" id="statusMini"></div>
+    <div class="note" style="max-width:680px;margin:16px auto 0">
+      <span>⚙️</span><span><b>更新アプリ連携：</b>Google Sheets の <code>schedule</code> シート（date / start_time / end_time / place / address / map_url / note / status）をスマホから更新。status＝open / canceled / soldout / hidden で表示が自動で切り替わります。</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 出店カレンダー ============ -->
+<section class="section" id="calendar" style="background:var(--sky-bot);border-top:3px solid var(--line);border-bottom:3px solid var(--line)" data-screen-label="カレンダー">
+  <div class="wrap">
+    <div class="eyebrow">CALENDAR</div>
+    <h2 class="h2">出店カレンダー</h2>
+    <p class="lead">今月・来月の出店予定をまとめてチェック。日付をタップで詳細が開きます。</p>
+    <div class="card cal-card">
+      <div class="cal-head">
+        <button class="cal-nav" id="calPrev" aria-label="前の月">‹</button>
+        <div class="mo en" id="calMonth"></div>
+        <button class="cal-nav" id="calNext" aria-label="次の月">›</button>
+      </div>
+      <div class="cal-grid" id="calGrid"></div>
+      <div class="cal-detail" id="calDetail"></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 今月のおすすめ ============ -->
+<section class="section rec-section" id="recommend" data-screen-label="おすすめ">
+  <div class="wrap">
+    <div class="eyebrow">PICK UP</div>
+    <h2 class="h2">今月のおすすめ</h2>
+    <p class="lead">menu シートの <code>recommend = TRUE</code> の商品を自動でピックアップ。</p>
+  </div>
+  <div class="rec-carousel-outer" id="recCarouselOuter">
+    <div class="rec-carousel-track" id="recGrid"></div>
+  </div>
+</section>
+
+<!-- ============ メニュー ============ -->
+<section class="section" id="menu" data-screen-label="メニュー">
+  <div class="wrap">
+    <div class="eyebrow">MENU</div>
+    <h2 class="h2">メニュー</h2>
+    <p class="lead">あたたかいスープと、こんがりホットサンド。カテゴリーで絞り込めます。</p>
+    <div class="menu-filter" id="menuFilter"></div>
+    <div class="menu-grid" id="menuGrid"></div>
+    <div class="note" style="max-width:680px;margin:22px auto 0">
+      <span>📷</span><span><b>商品写真は枠のみ：</b>実画像は <code>Cloudinary（machi-no-spoon/menu/）</code> で管理予定。menu シートの image 列に URL / public_id を保存して差し替えます。</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 店主紹介 ============ -->
+<section class="section" id="owner" data-screen-label="店主紹介">
+  <div class="wrap">
+    <div class="eyebrow">OWNER</div>
+    <h2 class="h2">店主紹介</h2>
+    <p class="lead">SNSでは流れてしまう「人柄」を、ここでしっかりお伝えします。</p>
+    <div class="owner-grid">
+      <div class="owner-photo"><img src="assets/owner.png" alt="machi no spoon の店主夫婦"></div>
+      <div class="owner-text">
+        <h3>こんにちは、machi no spoon です</h3>
+        <div class="role en">Soup &amp; Hot Sandwich</div>
+        <p>「いそがしい毎日でも、あたたかい一杯でほっとひと息ついてほしい」。そんな思いから、夫婦ふたりで小さなキッチンカーをはじめました。</p>
+        <p>素材を活かしたスープと、その場で焼き上げるホットサンド。まちのいろんな場所で、みなさんとお会いできるのを楽しみにしています。</p>
+        <div class="owner-quote">見かけたら、気軽に声をかけてください。今日のおすすめをお話ししながら、あたたかい一杯をお渡しします。</div>
+        <div class="note"><span>🖼️</span><span><b>写真は仮：</b>店主写真は添付イラストを使用中。実写・別イラストに差し替え可。</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ キッチンカー紹介 ============ -->
+<section class="section about-section" id="about" style="border-top:3px solid var(--line);border-bottom:3px solid var(--line)" data-screen-label="キッチンカー紹介">
+  <div class="wrap">
+    <div class="eyebrow">ABOUT</div>
+    <h2 class="h2">キッチンカーのこと</h2>
+    <div class="about-grid">
+      <div class="about-scene"><img src="assets/scene.png" alt="まちにやってきた machi no spoon"></div>
+      <div class="about-text">
+        <h3>今日も、まちのどこかで。</h3>
+        <p>公園、マルシェ、駅前、朝市。machi no spoon は地域のいろいろな場所に出店しています。あたたかいスープとホットサンドで、その日その場所に小さなひと息を。</p>
+        <p>地域のお店やイベントとつながりながら、まちの「ほっとする時間」を届けていきます。</p>
+        <div class="about-feats">
+          <span class="tag">スープ</span>
+          <span class="tag">ホットサンド</span>
+          <span class="tag">ドリンク</span>
+          <span class="tag season">地域とつながる</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ Instagram風カルーセル ============ -->
+<section class="section" id="days" data-screen-label="日々">
+  <div class="wrap">
+    <div class="eyebrow">GALLERY</div>
+    <h2 class="h2">machi no spoon の日々</h2>
+    <p class="lead">出店の様子や、できたての一杯。日々のひとコマをのぞいてみてください。</p>
+  </div>
+  <div class="carousel" id="carousel"></div>
+  <div class="wrap">
+    <div class="note" style="max-width:680px;margin:0 auto">
+      <span>🖼️</span><span><b>投稿画像は枠のみ：</b>Instagram埋め込みではなく、サイト内デザインの横スクロールギャラリー。実画像が用意でき次第、差し替えます。</span>
+    </div>
+  </div>
+</section>
+
+<!-- ============ 出店依頼・お問い合わせ ============ -->
+<section class="section contact-section" id="contact" data-screen-label="お問い合わせ">
+  <div class="wrap">
+    <div class="eyebrow">CONTACT</div>
+    <h2 class="h2">出店依頼・お問い合わせ</h2>
+    <div class="card contact-card">
+      <p class="intro">イベント出店、受付中です。地域のお祭り・マルシェ・企業イベント・学校行事など、お気軽にご相談ください。</p>
+      <div class="contact-list">
+        <span class="pill">地域のお祭り</span>
+        <span class="pill">マルシェ</span>
+        <span class="pill">企業イベント</span>
+        <span class="pill">学校・地域行事</span>
+      </div>
+      <div class="contact-info">
+        <div class="ci"><b>対応エリア</b>市内および近郊（応相談）</div>
+        <div class="ci"><b>必要スペース</b>約 3m × 6m（駐車1台分＋α）</div>
+        <div class="ci"><b>電源</b>要否をお知らせください</div>
+        <div class="ci"><b>その他</b>メニュー・数量などご相談OK</div>
+      </div>
+      <div class="contact-btns">
+        <a class="btn" href="#" target="_blank" rel="noopener">📷 Instagram でDM</a>
+        <a class="btn green" href="#" target="_blank" rel="noopener">💬 公式LINE で相談</a>
+      </div>
+      <div class="note"><span>🔗</span><span><b>リンク先は仮：</b>Instagram / 公式LINE の実URLを設定してください。メールフォームは今回は省略。</span></div>
+    </div>
+  </div>
+</section>
+
+<!-- ============ FOOTER ============ -->
+<footer>
+  <div class="fb"><span class="sp">🥄</span><span class="en">machi no spoon</span></div>
+  <p>心もおなかも、ほっとひといき。 — 今日も、まちのどこかで。</p>
+  <p style="margin-top:14px"><button class="pill" id="noteToggle" style="background:#5a4631;color:#fff7e6;border-color:#fff7e6">📝 注釈を隠す</button></p>
+</footer>
+
+<script src="app.js"></script>
+</body>
+</html>
