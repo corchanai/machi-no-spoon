@@ -265,7 +265,8 @@ body.hidenotes .hero-anim-note{display:none}
 .mcard .labels{display:flex;gap:6px;flex-wrap:wrap}
 
 /* ============ RECOMMEND CAROUSEL ============ */
-.rec-section{background:var(--sky-bot);border-top:3px solid var(--line);border-bottom:3px solid var(--line)}
+.rec-section{background:var(--cream);border-top:3px solid var(--line);border-bottom:3px solid var(--line)}
+#menu{background:var(--sky-bot)}
 
 /* 外枠：overflow:hidden でカード両端を隠してトラックを流す */
 .rec-carousel-outer{
