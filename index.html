@@ -67,7 +67,6 @@
         <img class="truck" src="assets/truck.png" alt="machi no spoon のキッチンカー">
       </div>
     </div>
-    <div class="hero-anim-note">CSSアニメ：🚚右→左ループ走行 ／ ☁雲が流れる ／ ~湯気ゆらゆら</div>
   </div>
 </section>
 
@@ -79,9 +78,6 @@
     <p class="lead">今日以降の予定を自動で判定して、いちばん近い出店を大きく表示します。</p>
     <div class="card statuscard" id="statusCard"></div>
     <div class="stat-mini" id="statusMini"></div>
-    <div class="note" style="max-width:680px;margin:16px auto 0">
-      <span>⚙️</span><span><b>更新アプリ連携：</b>Google Sheets の <code>schedule</code> シート（date / start_time / end_time / place / address / map_url / note / status）をスマホから更新。status＝open / canceled / soldout / hidden で表示が自動で切り替わります。</span>
-    </div>
   </div>
 </section>
 
@@ -108,7 +104,6 @@
   <div class="wrap">
     <div class="eyebrow">PICK UP</div>
     <h2 class="h2">今月のおすすめ</h2>
-    <p class="lead">menu シートの <code>recommend = TRUE</code> の商品を自動でピックアップ。</p>
   </div>
   <div class="rec-carousel-outer" id="recCarouselOuter">
     <div class="rec-carousel-track" id="recGrid"></div>
@@ -123,9 +118,6 @@
     <p class="lead">あたたかいスープと、こんがりホットサンド。カテゴリーで絞り込めます。</p>
     <div class="menu-filter" id="menuFilter"></div>
     <div class="menu-grid" id="menuGrid"></div>
-    <div class="note" style="max-width:680px;margin:22px auto 0">
-      <span>📷</span><span><b>商品写真は枠のみ：</b>実画像は <code>Cloudinary（machi-no-spoon/menu/）</code> で管理予定。menu シートの image 列に URL / public_id を保存して差し替えます。</span>
-    </div>
   </div>
 </section>
 
@@ -143,7 +135,6 @@
         <p>「いそがしい毎日でも、あたたかい一杯でほっとひと息ついてほしい」。そんな思いから、夫婦ふたりで小さなキッチンカーをはじめました。</p>
         <p>素材を活かしたスープと、その場で焼き上げるホットサンド。まちのいろんな場所で、みなさんとお会いできるのを楽しみにしています。</p>
         <div class="owner-quote">見かけたら、気軽に声をかけてください。今日のおすすめをお話ししながら、あたたかい一杯をお渡しします。</div>
-        <div class="note"><span>🖼️</span><span><b>写真は仮：</b>店主写真は添付イラストを使用中。実写・別イラストに差し替え可。</span></div>
       </div>
     </div>
   </div>
@@ -179,11 +170,6 @@
     <p class="lead">出店の様子や、できたての一杯。日々のひとコマをのぞいてみてください。</p>
   </div>
   <div class="carousel" id="carousel"></div>
-  <div class="wrap">
-    <div class="note" style="max-width:680px;margin:0 auto">
-      <span>🖼️</span><span><b>投稿画像は枠のみ：</b>Instagram埋め込みではなく、サイト内デザインの横スクロールギャラリー。実画像が用意でき次第、差し替えます。</span>
-    </div>
-  </div>
 </section>
 
 <!-- ============ 出店依頼・お問い合わせ ============ -->
@@ -209,7 +195,6 @@
         <a class="btn" href="#" target="_blank" rel="noopener">📷 Instagram でDM</a>
         <a class="btn green" href="#" target="_blank" rel="noopener">💬 公式LINE で相談</a>
       </div>
-      <div class="note"><span>🔗</span><span><b>リンク先は仮：</b>Instagram / 公式LINE の実URLを設定してください。メールフォームは今回は省略。</span></div>
     </div>
   </div>
 </section>
@@ -218,7 +203,6 @@
 <footer>
   <div class="fb"><span class="sp">🥄</span><span class="en">machi no spoon</span></div>
   <p>心もおなかも、ほっとひといき。 — 今日も、まちのどこかで。</p>
-  <p style="margin-top:14px"><button class="pill" id="noteToggle" style="background:#5a4631;color:#fff7e6;border-color:#fff7e6">📝 注釈を隠す</button></p>
 </footer>
 
 <script src="app.js"></script>

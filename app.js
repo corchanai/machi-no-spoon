@@ -563,23 +563,10 @@
   }
 
   /* ============================================================
-     注釈トグル
-  ============================================================ */
-  function initNotes() {
-    const t = $('#noteToggle');
-    if (!t) return;
-    t.addEventListener('click', () => {
-      document.body.classList.toggle('hidenotes');
-      t.textContent = document.body.classList.contains('hidenotes') ? '📝 注釈を表示' : '📝 注釈を隠す';
-    });
-  }
-
-  /* ============================================================
      初期化
   ============================================================ */
   document.addEventListener('DOMContentLoaded', () => {
     initNav();
-    initNotes();
     renderCarousel();
 
     // カレンダーナビのイベントを先にバインド（データロード前でも動作）
